@@ -6,13 +6,39 @@ export class Random extends React.Component {
     color: [],
   };
 
+  randomColor = () => {
+    let newArr = [];
+    for (let i = 0; i < 3; i++) {
+      newArr.push(Math.floor(Math.random() * 256));
+    }
+    this.setState({
+      color: newArr,
+    });
+  };
+
+  onClick = () => {
+    this.randomColor();
+  };
+
+  formatColor = (arr) => {
+    return `rgb(${arr.join(",")})`;
+  };
+
+  changeBackgroundColor = () => {
+    document.body.style.background = this.formatColor(this.state.color);
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    this.changeBackgroundColor();
+  }
+
   render() {
     return (
       <div>
         <div>
-          <h1>Display RGB</h1>
+          <h1>The current color is: {this.formatColor(this.state.color)} </h1>
         </div>
-        <Button />
+        <Button onClick={this.onClick} />
       </div>
     );
   }
