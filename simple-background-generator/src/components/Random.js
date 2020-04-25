@@ -6,6 +6,7 @@ export class Random extends React.Component {
     color: [],
   };
 
+  //Creates an array with 3 random numbers between 0 and 255 and sets a new array equal to the 
   randomColor = () => {
     let newArr = [];
     for (let i = 0; i < 3; i++) {
