@@ -1,3 +1,5 @@
+
+#Declaring variables
 semi_annual_raise = .07
 r = .04
 house_cost = 1000000
