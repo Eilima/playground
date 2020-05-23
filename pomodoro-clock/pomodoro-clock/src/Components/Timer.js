@@ -13,11 +13,11 @@ export class Timer extends React.Component {
     if (stateName === "focusTime") currentStateVal = this.state.focusTime;
     else currentStateVal = this.state.breakTime;
 
-    if (event.target.value === "+" && currentStateVal != 60)
+    if (event.target.value === "+" && currentStateVal !== 60)
       this.setState({
         [stateName]: currentStateVal + 1,
       });
-    else if (event.target.value === "-" && currentStateVal != 1)
+    else if (event.target.value === "-" && currentStateVal !== 1)
       this.setState({
         [stateName]: currentStateVal - 1,
       });
@@ -27,6 +27,7 @@ export class Timer extends React.Component {
     return (
       <div>
         <div>
+          <h2>Break Timer</h2>
           <button onClick={this.timerClick} id="breakTime" value="+">
             +
           </button>
@@ -36,6 +37,7 @@ export class Timer extends React.Component {
           </button>
         </div>
         <div>
+          <h2>Focus Timer</h2>
           <button onClick={this.timerClick} id="focusTime" value="+">
             +
           </button>
