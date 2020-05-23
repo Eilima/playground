@@ -1,4 +1,30 @@
-.timer {
-  display: inline-block;
+.button-level,
+.length-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-level {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.min-title {
   margin: auto;
+}
+
+.timerButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+button {
+  margin: 8px;
+}
+
+.Main-title {
+  text-align: center;
 }

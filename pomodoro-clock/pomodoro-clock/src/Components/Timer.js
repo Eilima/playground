@@ -1,5 +1,4 @@
 import React from "react";
-
 export class Timer extends React.Component {
   state = {
     focusTime: 25,
@@ -25,26 +24,30 @@ export class Timer extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h2>Break Timer</h2>
-          <button onClick={this.timerClick} id="breakTime" value="+">
-            +
-          </button>
-          <h1>{this.state.breakTime}</h1>
-          <button onClick={this.timerClick} id="breakTime" value="-">
-            -
-          </button>
+      <div className="">
+        <div className="title-level">
+          <h2 className="min-title">Focus Timer</h2>
+          <h2 className="min-title">Break Timer</h2>
         </div>
-        <div>
-          <h2>Focus Timer</h2>
-          <button onClick={this.timerClick} id="focusTime" value="+">
-            +
-          </button>
-          <h1>{this.state.focusTime}</h1>
-          <button onClick={this.timerClick} id="focusTime" value="-">
-            -
-          </button>
+        <div className="button-level">
+          <div className="timerButtons">
+            <button onClick={this.timerClick} id="breakTime" value="+">
+              +
+            </button>
+            <h1>{this.state.breakTime}</h1>
+            <button onClick={this.timerClick} id="breakTime" value="-">
+              -
+            </button>
+          </div>
+          <div className="timerButtons">
+            <button onClick={this.timerClick} id="focusTime" value="+">
+              +
+            </button>
+            <h1>{this.state.focusTime}</h1>
+            <button onClick={this.timerClick} id="focusTime" value="-">
+              -
+            </button>
+          </div>
         </div>
       </div>
     );
