@@ -7,25 +7,20 @@ export class Timer extends React.Component {
   };
 
   timerClick = (event) => {
-    if (event.target.id === "breakTime") {
-      if (event.target.value === "+")
-        this.setState({
-          breakTime: this.state.breakTime + 1,
-        });
-      else
-        this.setState({
-          breakTime: this.state.breakTime - 1,
-        });
-    } else {
-      if (event.target.value === "+")
-        this.setState({
-          focusTime: this.state.focusTime + 1,
-        });
-      else
-        this.setState({
-          focusTime: this.state.focusTime - 1,
-        });
-    }
+    let stateName = event.target.id;
+    let currentStateVal;
+
+    if (stateName === "focusTime") currentStateVal = this.state.focusTime;
+    else currentStateVal = this.state.breakTime;
+
+    if (event.target.value === "+")
+      this.setState({
+        [stateName]: currentStateVal + 1,
+      });
+    else if (event.target.value === "-")
+      this.setState({
+        [stateName]: currentStateVal - 1,
+      });
   };
 
   render() {
