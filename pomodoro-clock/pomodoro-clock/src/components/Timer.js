@@ -1,16 +1,12 @@
 import React from "react";
 export class Timer extends React.Component {
-  state = {
-    focusTime: 25,
-    breakTime: 5,
-  };
 
-  timerClick = (event) => {
+  handleClick = (event) => {
     let stateName = event.target.id;
     let currentStateVal;
 
-    if (stateName === "focusTime") currentStateVal = this.state.focusTime;
-    else currentStateVal = this.state.breakTime;
+    if (stateName === "focusTime") currentStateVal = this.props.focusTime;
+    else currentStateVal = this.props.breakTime;
 
     if (event.target.value === "+" && currentStateVal !== 60)
       this.setState({
@@ -22,6 +18,13 @@ export class Timer extends React.Component {
       });
   };
 
+  handleClick = (event) => { 
+    let stateName = event.target.id
+    let value = event.target.value
+    this.props.timerClick(stateName, value)
+  }
+
+
   render() {
     return (
       <div className="">
@@ -31,20 +34,20 @@ export class Timer extends React.Component {
         </div>
         <div className="button-level">
           <div className="timerButtons">
-            <button onClick={this.timerClick} id="breakTime" value="-">
+            <button onClick={this.handleClick} id="breakTime" value="-">
               -
             </button>
-            <h1>{this.state.breakTime}</h1>
-            <button onClick={this.timerClick} id="breakTime" value="+">
+            <h1>{this.props.breakTime}</h1>
+            <button onClick={this.handleClick} id="breakTime" value="+">
               +
             </button>
           </div>
           <div className="timerButtons">
-            <button onClick={this.timerClick} id="focusTime" value="-">
+            <button onClick={this.handleClick} id="focusTime" value="-">
               -
             </button>
-            <h1>{this.state.focusTime}</h1>
-            <button onClick={this.timerClick} id="focusTime" value="+">
+            <h1>{this.props.focusTime}</h1>
+            <button onClick={this.handleClick} id="focusTime" value="+">
               +
             </button>
           </div>
