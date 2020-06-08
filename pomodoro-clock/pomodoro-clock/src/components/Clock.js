@@ -1,5 +1,6 @@
 import React from "react";
 import { Timer } from "./Timer";
+import { Controls } from "./Controls";
 
 export class Clock extends React.Component {
   state = { 
@@ -36,6 +37,7 @@ export class Clock extends React.Component {
       <div>
         <Timer focusTime={this.state.focusTime} breakTime={this.state.breakTime} timerClick={this.timerClick} />
         <h1 className='title-level'>{this.clockify()}</h1>
+        <Controls />
       </div>
     );
   }
