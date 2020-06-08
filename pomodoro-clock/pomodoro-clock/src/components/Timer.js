@@ -31,21 +31,21 @@ export class Timer extends React.Component {
         </div>
         <div className="button-level">
           <div className="timerButtons">
-            <button onClick={this.timerClick} id="breakTime" value="+">
-              +
-            </button>
-            <h1>{this.state.breakTime}</h1>
             <button onClick={this.timerClick} id="breakTime" value="-">
               -
             </button>
-          </div>
-          <div className="timerButtons">
-            <button onClick={this.timerClick} id="focusTime" value="+">
+            <h1>{this.state.breakTime}</h1>
+            <button onClick={this.timerClick} id="breakTime" value="+">
               +
             </button>
-            <h1>{this.state.focusTime}</h1>
+          </div>
+          <div className="timerButtons">
             <button onClick={this.timerClick} id="focusTime" value="-">
               -
+            </button>
+            <h1>{this.state.focusTime}</h1>
+            <button onClick={this.timerClick} id="focusTime" value="+">
+              +
             </button>
           </div>
         </div>
