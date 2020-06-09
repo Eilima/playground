@@ -10,7 +10,7 @@ export class Controls extends React.Component {
     render() {
         return (
             <div className='title-level'>
-                <button onClick={this.onClick}>Pause/Play</button>
+                <button onClick={this.onClick}>>/=</button>
                 <button onClick={this.onClick}>Reset</button>
             </div>
         )
