@@ -3,7 +3,7 @@ import React from 'react'
 export class Controls extends React.Component {
 
     onClick = () => {
-        console.log('test')
+        this.props.decrementTimer()
     }
 
 
@@ -12,6 +12,7 @@ export class Controls extends React.Component {
             <div className='title-level'>
                 <button onClick={this.onClick}>>/=</button>
                 <button onClick={this.onClick}>Reset</button>
+                <button onClick={this.props.toggleSound}>Sound</button>
             </div>
         )
     }
