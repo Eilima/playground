@@ -1,28 +1,14 @@
 import React from "react";
 export class Timer extends React.Component {
 
-  handleClick = (event) => {
-    let stateName = event.target.id;
-    let currentStateVal;
-
-    if (stateName === "focusTime") currentStateVal = this.props.focusTime;
-    else currentStateVal = this.props.breakTime;
-
-    if (event.target.value === "+" && currentStateVal !== 60)
-      this.setState({
-        [stateName]: currentStateVal + 1,
-      });
-    else if (event.target.value === "-" && currentStateVal !== 1)
-      this.setState({
-        [stateName]: currentStateVal - 1,
-      });
-  };
-
   handleClick = (event) => { 
     let stateName = event.target.id
     let value = event.target.value
     this.props.timerClick(stateName, value)
+
   }
+
+
 
 
   render() {
