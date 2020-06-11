@@ -7,6 +7,7 @@ export class Clock extends React.Component {
     focusTime: 25,
     breakTime: 5,
     timer: 1500,
+    sound: 'on'
   }
 
   timerClick = (stateName, value) => {
@@ -38,13 +39,27 @@ export class Clock extends React.Component {
     })
   }
 
+  timerControl() {
+    let control = this.state.timerState == 'stopped' ? (
+      this.beginCountDown(),
+      this.setState({timerState: 'running'})
+    ) : (
+      this.setState({timerState: 'stopped'}),
+      this.state.intervalID && this.state.intervalID.cancel()
+    );
+  }
+
+  toggleSound = () => {
+    this.state.sound === 'on' ? this.setState({sound: 'off'}) : this.setState({sound: 'on'})
+  }
+
 
   render() {
     return (
       <div>
         <Timer focusTime={this.state.focusTime} breakTime={this.state.breakTime} timerClick={this.timerClick} />
         <h1 className='title-level'>{this.clockify()}</h1>
-        <Controls decrementTimer={this.decrementTimer} />
+        <Controls decrementTimer={this.decrementTimer}  toggleSound={this.toggleSound} />
       </div>
     );
   }
