@@ -6,13 +6,19 @@ export class Controls extends React.Component {
         this.props.decrementTimer()
     }
 
+    toggleSound = () => {
+        let soundVal
+        this.props.sound === 'on' ? soundVal = 'off' : soundVal = 'on'
+        this.props.setSound(soundVal)
+    }
+
 
     render() {
         return (
             <div className='title-level'>
                 <button onClick={this.onClick}>>/=</button>
                 <button onClick={this.onClick}>Reset</button>
-                <button onClick={this.props.toggleSound}>Sound</button>
+                <button onClick={this.toggleSound}>Sound</button>
             </div>
         )
     }

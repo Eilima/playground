@@ -49,8 +49,8 @@ export class Clock extends React.Component {
     );
   }
 
-  toggleSound = () => {
-    this.state.sound === 'on' ? this.setState({sound: 'off'}) : this.setState({sound: 'on'})
+  setSound = (soundVal) => {
+    this.setState({sound: soundVal})
   }
 
 
@@ -59,7 +59,7 @@ export class Clock extends React.Component {
       <div>
         <Timer focusTime={this.state.focusTime} breakTime={this.state.breakTime} timerClick={this.timerClick} />
         <h1 className='title-level'>{this.clockify()}</h1>
-        <Controls decrementTimer={this.decrementTimer}  toggleSound={this.toggleSound} />
+        <Controls decrementTimer={this.decrementTimer} setSound={this.setSound} toggleSound={this.toggleSound} sound={this.state.sound}/>
       </div>
     );
   }
