@@ -53,17 +53,29 @@ export class Clock extends React.Component {
     this.setState({sound: soundVal})
   }
 
-  setTimer = () => {
-    this.setState({timer: 1500})
+  resetTimer = () => {
+    this.setState({
+      focusTime: 25,
+      breakTime: 5,
+      timer: 1500
+    })
+
+  }
+
+  changeTimer = () => {
+    let timerVal = this.state.focusTime * 60
+    setTimeout(this.setState({
+      timer: timerVal
+    }), 5000)
   }
 
 
   render() {
     return (
       <div>
-        <Timer focusTime={this.state.focusTime} breakTime={this.state.breakTime} timerClick={this.timerClick} />
+        <Timer focusTime={this.state.focusTime} breakTime={this.state.breakTime} timerClick={this.timerClick} changeTimer={this.changeTimer} />
         <h1 className='title-level'>{this.clockify()}</h1>
-        <Controls decrementTimer={this.decrementTimer} setSound={this.setSound} toggleSound={this.toggleSound} setTimer={this.setTimer}/>
+        <Controls decrementTimer={this.decrementTimer} setSound={this.setSound} toggleSound={this.toggleSound} setTimer={this.resetTimer}/>
       </div>
     );
   }
