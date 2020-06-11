@@ -32,12 +32,19 @@ export class Clock extends React.Component {
     minutes = minutes < 10 ? '0' + minutes : minutes
     return `${minutes}:${seconds}`
   }
+  decrementTimer = () => {
+    this.setState({
+      timer: this.state.timer - 1
+    })
+  }
+
+
   render() {
     return (
       <div>
         <Timer focusTime={this.state.focusTime} breakTime={this.state.breakTime} timerClick={this.timerClick} />
         <h1 className='title-level'>{this.clockify()}</h1>
-        <Controls />
+        <Controls decrementTimer={this.decrementTimer} />
       </div>
     );
   }
