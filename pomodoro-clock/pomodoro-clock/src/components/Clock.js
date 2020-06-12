@@ -19,7 +19,7 @@ export class Clock extends React.Component {
     if (value === "+" && currentStateVal !== 60)
       this.setState({
         [stateName]: currentStateVal + 1,
-      });
+      }, this.changeTimer);
     else if (value === "-" && currentStateVal !== 1)
       this.setState({
         [stateName]: currentStateVal - 1,
@@ -64,9 +64,9 @@ export class Clock extends React.Component {
 
   changeTimer = () => {
     let timerVal = this.state.focusTime * 60
-    setTimeout(this.setState({
+    this.setState({
       timer: timerVal
-    }), 5000)
+    })
   }
 
 
