@@ -73,7 +73,7 @@ export class Clock extends React.Component {
   render() {
     return (
       <div>
-        <Timer focusTime={this.state.focusTime} breakTime={this.state.breakTime} timerClick={this.timerClick} changeTimer={this.changeTimer} />
+        <Timer focusTime={this.state.focusTime} breakTime={this.state.breakTime} timerClick={this.timerClick} />
         <h1 className='title-level'>{this.clockify()}</h1>
         <Controls decrementTimer={this.decrementTimer} setSound={this.setSound} toggleSound={this.toggleSound} setTimer={this.resetTimer}/>
       </div>
