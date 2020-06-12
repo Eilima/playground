@@ -3,23 +3,35 @@ import { Timer } from "./Timer";
 import { Controls } from "./Controls";
 
 export class Clock extends React.Component {
+  timerId = null
   state = { 
     focusTime: 25,
     breakTime: 5,
     timer: 1500,
-    sound: 'on'
+    sound: 'on',
+    timerState: 'stop',
+  }
+
+  startStop = () => {
+    if(this.state.timerState === 'stop') {
+      this.setState({timerState: 'play'})
+      setInterval(this.decrementTimer, 1000) 
+    } else {
+      this.setState({timerState: 'stop'})
+      clearInterval(this.decrementTimer)
+    }
   }
 
   timerClick = (stateName, value) => {
     let currentStateVal;
 
-    if (stateName === "focusTime") currentStateVal = this.state.focusTime;
-    else currentStateVal = this.state.breakTime;
+    stateName === "focusTime" ? currentStateVal = this.state.focusTime : currentStateVal = this.state.breakTime
 
     if (value === "+" && currentStateVal !== 60)
       this.setState({
         [stateName]: currentStateVal + 1,
       }, this.changeTimer);
+
     else if (value === "-" && currentStateVal !== 1)
       this.setState({
         [stateName]: currentStateVal - 1,
@@ -57,7 +69,8 @@ export class Clock extends React.Component {
     this.setState({
       focusTime: 25,
       breakTime: 5,
-      timer: 1500
+      timer: 1500,
+      timerState: 'stop'
     })
 
   }
@@ -75,7 +88,7 @@ export class Clock extends React.Component {
       <div>
         <Timer focusTime={this.state.focusTime} breakTime={this.state.breakTime} timerClick={this.timerClick} />
         <h1 className='title-level'>{this.clockify()}</h1>
-        <Controls decrementTimer={this.decrementTimer} setSound={this.setSound} toggleSound={this.toggleSound} setTimer={this.resetTimer}/>
+        <Controls startStop={this.startStop} setSound={this.setSound} toggleSound={this.toggleSound} setTimer={this.resetTimer}/>
       </div>
     );
   }
