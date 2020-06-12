@@ -8,7 +8,6 @@ export class Timer extends React.Component {
     let stateName = event.target.id
     let value = event.target.value
     this.props.timerClick(stateName, value)
-    this.props.changeTimer()
   }
 
 
